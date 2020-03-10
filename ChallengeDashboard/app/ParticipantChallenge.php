@@ -13,4 +13,7 @@ class ParticipantChallenge extends Model
     public function challenges() {
         return $this->hasMany('App\Challenge');
     }
+    public function comments() {
+        return $this->hasMany('App\Comment');
+    }
 }
