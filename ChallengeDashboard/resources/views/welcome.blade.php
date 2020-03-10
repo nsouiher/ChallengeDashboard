@@ -12,10 +12,10 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
+                background-color: #ffff;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
-                font-weight: 200;
+                font-weight: bold;
                 height: 100vh;
                 margin: 0;
             }
@@ -24,11 +24,7 @@
                 height: 100vh;
             }
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+           
 
             .position-ref {
                 position: relative;
@@ -46,13 +42,18 @@
 
             .title {
                 font-size: 84px;
+                font-weight: 200;
             }
-
+           .links{
+               background-color: #20B2AA
+;
+           }
             .links > a {
-                color: #636b6f;
+              
+                color: white;
                 padding: 0 25px;
                 font-size: 13px;
-                font-weight: 600;
+                font-weight: bold;
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
@@ -79,15 +80,13 @@
                 </div>
             @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+            <div class="content title m-b-md">
+                
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
+                    <a href="{{ route('createChallenge') }}">Create New Challenge</a>
+                    <a href="{{ route('challenges') }}">Challenges</a>
+                    <a href="{{ route('dashboard') }}">Dashboard</a>
                     <a href="https://blog.laravel.com">Blog</a>
                     <a href="https://nova.laravel.com">Nova</a>
                     <a href="https://forge.laravel.com">Forge</a>
@@ -95,6 +94,9 @@
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
             </div>
+            <img style="  display: block;
+            margin: 0 auto;  margin-top: 100px;" src="{{URL::asset('hrdblogo.png')}}"  alt="Logo">
         </div>
+       
     </body>
 </html>

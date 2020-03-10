@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,3 +24,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/createChallenge','ChallengeController@create')->name('createChallenge');
+Route::post('/createChallenge','ChallengeController@store')->name('saveChallenge');
+Route::get('/challenges','ChallengeController@show')->name('challenges');
+Route::post('/dashboard','ChallengeController@show')->name('dashboard');

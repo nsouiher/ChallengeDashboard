@@ -19,7 +19,6 @@ class CreateParticipantChallengesTable extends Migration
             $table->integer('id');
             $table->integer('challenge_id');
             $table->primary('id', 'challenge_id');
-
             $table->foreign('id')->references('id')->on('users');
             $table->foreign('challenge_id')->references('challenge_id')->on('challenges');
             $table->timestamps();
