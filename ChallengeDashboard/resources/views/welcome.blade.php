@@ -85,16 +85,16 @@
 
                 <div class="links">
                     <a href="{{ route('createChallenge') }}">Create New Challenge</a>
-                    <a href="{{ route('challenges') }}">Challenges</a>
+                    <a href="/challenges">Challenges</a>
                     <a href="{{ route('dashboard') }}">Dashboard</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
+                    <a href="/notifications">Notifications</a>
+                    <a href="/manageUsers">Manage Users</a>
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
             </div>
-            <img style="  display: block;
+            <img style="  display: block; 
             margin: 0 auto;  margin-top: 100px;" src="{{URL::asset('hrdblogo.png')}}"  alt="Logo">
         </div>
        

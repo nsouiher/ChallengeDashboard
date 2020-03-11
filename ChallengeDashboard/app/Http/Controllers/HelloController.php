@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class HelloController extends Controller
 {
-     public function test(){
+     public function welcome(){
     //     $controllerTest='Hello from controller.';
     //     return view('hello',[
     //         'controllerTestKey' => $controllerTest,
@@ -19,6 +19,7 @@ class HelloController extends Controller
     // return    view('hello',[
     //          'controllerTestKey' => $controllerTest,
     //         ]);;
+    
     return view('hello');
 }
 }

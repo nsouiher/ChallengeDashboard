@@ -40,4 +40,5 @@ class User extends Authenticatable
     public function participantChanllenge() {
         return $this->belongsTo('App\participantChanllenge');
     }
+    
 }

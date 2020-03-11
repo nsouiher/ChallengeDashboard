@@ -14,7 +14,7 @@ class CreateChallengesTable extends Migration
     public function up()
     {
         Schema::create('challenges', function (Blueprint $table) {
-            $table->integer('challenge_id')->autoIncrement();
+            $table->integer('id')->autoIncrement();
          
             $table->string('title')->unique();
             $table->timestamp('created_at')->nullable();

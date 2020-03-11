@@ -14,11 +14,13 @@ class CreateCommentsTable extends Migration
     public function up()
     {
         Schema::create('comments', function (Blueprint $table) {
-            $table->integer('comment_id')->autoIncrement();
-            $table->timestamp('created_at')->nullable();
-            $table->timestamp('updated_at')->nullable();
-            $table->string('Content');
-            //$table->timestamps();
+            $table->integer('comment_id');
+            $table->primary('comment_id');
+            $table->foreign('comment_id')->references('id')->on('users');
+            $table->foreign('challenge_id')->references('id')->on('challenges');
+            $table->string('participant_code');
+            $table->string('is_Winner');
+            $table->timestamps();
         });
     }
 

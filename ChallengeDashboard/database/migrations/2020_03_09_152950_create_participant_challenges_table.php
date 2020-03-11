@@ -16,11 +16,13 @@ class CreateParticipantChallengesTable extends Migration
         Schema::create('participant_challenges', function (Blueprint $table) {
            
             
-            $table->integer('id');
+            $table->integer('user_id');
             $table->integer('challenge_id');
-            $table->primary('id', 'challenge_id');
-            $table->foreign('id')->references('id')->on('users');
-            $table->foreign('challenge_id')->references('challenge_id')->on('challenges');
+            $table->primary('user_id', 'challenge_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('challenge_id')->references('id')->on('challenges');
+            $table->string('participant_code');
+            $table->string('is_Winner');
             $table->timestamps();
         });
     }

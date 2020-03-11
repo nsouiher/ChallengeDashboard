@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/hello', 'HelloController@test');
 
 Auth::routes();
@@ -28,3 +29,7 @@ Route::get('/createChallenge','ChallengeController@create')->name('createChallen
 Route::post('/createChallenge','ChallengeController@store')->name('saveChallenge');
 Route::get('/challenges','ChallengeController@show')->name('challenges');
 Route::post('/dashboard','ChallengeController@show')->name('dashboard');
+Route::get('/challenges','ChallengeController@show')->name('notifications');
+//Route::any('/challenges/delete','ChallengeController@destroy')->name('deleteChallenge');
+Route::delete('/challenge/{id}','ChallengeController@destroy')->name('deleteChallenge');
+Route::resource('challenge','ChallengeController');

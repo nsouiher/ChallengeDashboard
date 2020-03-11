@@ -1,23 +1,28 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Challenge;
 use App\Http\Controllers\Controller;
+use App\Notifications\NewGuest;
 use App\Providers\RouteServiceProvider;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use SebastianBergmann\Environment\Console;
+use Illuminate\Support\Facades\Redirect;
+
 class ChallengeController extends Controller
 {
     //
-     /**
+    /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
-    public $challenges ;
+    // protected $redirectTo = RouteServiceProvider::HOME;
+    public $challenges;
     /**
      * Create a new controller instance.
      *
@@ -38,7 +43,7 @@ class ChallengeController extends Controller
     {
         return Validator::make($data, [
             'title' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string','max:255'],
+            'description' => ['required', 'string', 'max:255'],
             'deadline' => ['required', 'date', 'confirmed'],
         ]);
     }
@@ -59,11 +64,10 @@ class ChallengeController extends Controller
         $challenge->deadline = $data->deadline;
         $challenge->save();
 
-        return view('succefullySubmitted');
-       
+        return Redirect::to('createChallenge')->with('success', 'Challenge has been created Successfully');
     }
 
-        /**
+    /**
      * Create a new challenge instance 
      *
      * @param  array  $data
@@ -71,19 +75,40 @@ class ChallengeController extends Controller
      */
     public function show()
     {
-        
+
         error_log("heloooooooo");
-        $challenges = \App\Challenge::all();
+
+        // $user = User::where('email', auth()->user()->email)->first();
+        // print_r(auth()->user()->email);
+
+        $challenges = Challenge::orderBy('deadline', 'asc')->paginate(5);
         error_log($challenges);
+        return view('challenges')->with('challenges', $challenges)->with('hidden', 'none')->withTitle('challenge');;
+        // $challenges = \App\Challenge::all();
+        // error_log($challenges);
 
         ///return view('succefullySubmitted');
-       
+
     }
+
+
+    public function destroy($id)
+    {
+        error_log('destroy');
+        Challenge::where('id',$id)->delete();
+        return Redirect::to('challenges')->with('success', 'Stock has been deleted Successfully');
+    }
+
+    // public function destroy($id)
+    // { User::where('id',$id)->delete();
+   
+    //     return Redirect::to('users')->with('success','User deleted successfully');
+    // }
+    
 
     public function create()
     {
         return view('organizer.createChallenge');
-       
     }
     // s
 }
