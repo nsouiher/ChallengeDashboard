@@ -58,10 +58,17 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
 
                             <div class="col-md-6">
-                                <select id="auth" type="text" class="form-control @error('auth') is-invalid @enderror" value="{{$user->auth}}" name="auth"  required autocomplete="auth">
-                                    @foreach ($auths as $auth)
+                                
+                                <select id="auth" type="text"  class="form-control @error('auth') is-invalid @enderror" name="auth"  required autocomplete="auth" >
+                                    <option value="{{$user->auth}}">{{$user->auth}}</option>
+                                    <option value="organizer">organizer</option>
+                                    <option value="admin">admin</option>
+                                    <option value="participant">participant</option>
+                                   
+                                    {{-- @foreach ($auths as $auth)
+                                   
                                     <option value="{{$user->auth}}">{{$auth}}</option>
-                                    @endforeach   
+                                    @endforeach    --}}
                                 </select>
                                 @error('auth')
                                     <span class="invalid-feedback" role="alert">

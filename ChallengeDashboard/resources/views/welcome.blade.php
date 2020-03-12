@@ -70,13 +70,13 @@
                 <div class="top-right links">
                     @auth
                    
-                        <a  class="nav-link" href="/guests" >
+                        <a  class="nav-link" href="/notifications" >
                         <i style="color:white;" class="fa fa-bell">
                             <span  class="badge badge-info">{{$newGuests}}</span>
                         </i>
                         </a>
                    
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/home') }}">Account</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -92,14 +92,14 @@
                 
 
                 <div class="links">
+                    @auth
                     <a href="{{ route('createChallenge') }}">Create New Challenge</a>
                     <a href="/challenges">Challenges</a>
-                    <a href="{{ route('dashboard') }}">Dashboard</a>
-                    <a href="/notifications">Notifications</a>
                     <a href="/manageUsers">Manage Users</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="/dashboard">Dashboard</a>
+                    @else
+                   <div></div>
+                   @endauth
                 </div>
             </div>
             <img style="  display: block; 

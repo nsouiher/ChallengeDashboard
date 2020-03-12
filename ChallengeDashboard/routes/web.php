@@ -35,3 +35,6 @@ Route::delete('/challenge/{id}','ChallengeController@destroy')->name('deleteChal
 Route::resource('challenge','ChallengeController');
 Route::resource('user','manageUsers');
 Route::get('/manageUsers','manageUsers@show')->name('manageUsers');
+Route::get('dashboard','UserChartController@dashboard');
+Route::get('notifications','manageUsers@guestsList');
+Route::post('approve/{id}','manageUsers@approve')->name('approve');

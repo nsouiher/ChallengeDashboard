@@ -33,21 +33,8 @@ class manageUsers extends Controller
     {
         $this->middleware('guest');
     }
- 
-  /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-    }
+
+  
     /**
      * Create a new challenge instance 
      *
@@ -66,10 +53,10 @@ class manageUsers extends Controller
     public function edit($id)
     {
 
-        $user=User::where('id', $id)->first();
-        $auths=["Admin","Organizer","Participant"];
+        $user = User::where('id', $id)->first();
+        $auths = ["Admin", "Organizer", "Participant"];
 
-        return view('layouts.updateUser')->with('user',$user)->with('auths',$auths)
+        return view('layouts.updateUser')->with('user', $user)->with('auths', $auths)
             ->with('success', 'Great! User updated successfully');
         // $where = array('id' => $id);
         // $data['user_info'] = User::where($where)->first();
@@ -86,23 +73,32 @@ class manageUsers extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'auth' => 'required'
-        ]);
-
-        $updatedUser = ['name' => $request->name, 'email' => $request->email, 'password' =>Hash::make($request->password), 'auth' => $request->type];
+        print($request['auth']);
+        $updatedUser = ['name' => $request->name, 'email' => $request->email, 'password' => Hash::make($request->password), 'auth' => $request->auth];
         User::where('id', $id)->update($updatedUser);
-
+       // print($updatedUser['auth']);
+        error_log($updatedUser['auth']);
         return Redirect::to('manageUsers')
-            ->with('success', 'Great! User updated successfully');
+            ->with('success', 'User updated successfully');
     }
     public function destroy($id)
     {
         error_log('destroy');
         User::where('id', $id)->delete();
         return Redirect::to('manageUsers')->with('success', 'User has been deleted Successfully');
+    }
+    public function guestsList()
+    {
+        $guests = User::where('auth','like','%guest%')->get();
+        return view('notifications')->with('success', 'User has been deleted Successfully')->with('guestsList', $guests);
+    }
+    public function approve($id)
+    {
+       $user= User::find($id);
+       $user->auth= "Participant";
+       $user ->update();
+    
+        return Redirect::to('notifications')
+            ->with('success', 'Guest approved successfully');
     }
 }
