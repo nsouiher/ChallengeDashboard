@@ -9,7 +9,9 @@
             <div class="alert alert-success" role="alert">
             
             {{ Session::get('success') }}
+            <a class="alert alert-success" href="/challenges">Jump to challenges</a>
         </div>
+       
            @endif
             
             <div class="card">

@@ -14,12 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
-Route::get('/hello', 'HelloController@test');
+Route::get('/', 'HomeController@welcome');
 
 Auth::routes();
 
@@ -33,3 +33,5 @@ Route::get('/challenges','ChallengeController@show')->name('notifications');
 //Route::any('/challenges/delete','ChallengeController@destroy')->name('deleteChallenge');
 Route::delete('/challenge/{id}','ChallengeController@destroy')->name('deleteChallenge');
 Route::resource('challenge','ChallengeController');
+Route::resource('user','manageUsers');
+Route::get('/manageUsers','manageUsers@show')->name('manageUsers');

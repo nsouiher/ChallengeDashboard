@@ -17,12 +17,11 @@ class CreateChallengesTable extends Migration
             $table->integer('id')->autoIncrement();
          
             $table->string('title')->unique();
-            $table->timestamp('created_at')->nullable();
-            $table->timestamp('updated_at')->nullable();
             $table->timestamp('deadline')->nullable();
             $table->string('description');
             $table->string('status');
             $table->rememberToken();
+            $table->timestamps();
            
         });
     }

@@ -8,7 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         <!-- Styles -->
         <style>
             html, body {
@@ -69,11 +69,19 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
+                   
+                        <a  class="nav-link" href="/guests" >
+                        <i style="color:white;" class="fa fa-bell">
+                            <span  class="badge badge-info">{{$newGuests}}</span>
+                        </i>
+                        </a>
+                   
                         <a href="{{ url('/home') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
                         @if (Route::has('register'))
+                       
                             <a href="{{ route('register') }}">Register</a>
                         @endif
                     @endauth

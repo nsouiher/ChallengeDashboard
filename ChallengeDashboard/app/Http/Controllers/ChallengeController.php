@@ -96,7 +96,7 @@ class ChallengeController extends Controller
     {
         error_log('destroy');
         Challenge::where('id',$id)->delete();
-        return Redirect::to('challenges')->with('success', 'Stock has been deleted Successfully');
+        return Redirect::to('challenges')->with('success', 'Challenge has been deleted Successfully');
     }
 
     // public function destroy($id)
