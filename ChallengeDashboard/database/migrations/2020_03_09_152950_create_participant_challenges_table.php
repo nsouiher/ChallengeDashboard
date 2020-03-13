@@ -15,12 +15,9 @@ class CreateParticipantChallengesTable extends Migration
     {
         Schema::create('participant_challenges', function (Blueprint $table) {
            
-            
+            $table->integer('id')->autoIncrement();
             $table->integer('user_id');
             $table->integer('challenge_id');
-            $table->primary('user_id', 'challenge_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('challenge_id')->references('id')->on('challenges');
             $table->string('participant_code');
             $table->string('is_Winner');
             $table->timestamps();

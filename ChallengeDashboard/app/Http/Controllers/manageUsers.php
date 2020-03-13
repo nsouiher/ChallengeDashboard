@@ -96,7 +96,7 @@ class manageUsers extends Controller
     {
        $user= User::find($id);
        $user->auth= "Participant";
-       $user ->update();
+       $user->update();
     
         return Redirect::to('notifications')
             ->with('success', 'Guest approved successfully');

@@ -15,16 +15,16 @@
            @endif
             
             <div class="card">
-                <div class="card-header">{{ __('Create New Challenge') }}</div>
+            <div class="card-header">{{ __('Updated Challenge : ') }}{{$challenge->deadline}}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('saveChallenge') }}">
+                    <form method="POST" action="{{ route('editChallenge', $challenge->id)}}">
                        {{ csrf_field() }}
                         <div class="form-group row">
                             <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
 
                             <div class="col-md-6">
-                                <input id="title" type="text" class="form-control @error('name') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="title" autofocus>
+                                <input id="title" type="text" class="form-control @error('name') is-invalid @enderror" name="title" value="{{$challenge->title}}" required autocomplete="title" autofocus>
 
                                 @error('title')
                                     <span class="invalid-feedback" role="alert">
@@ -38,7 +38,8 @@
                             <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Challenge Description') }}</label>
 
                             <div class="col-md-6">
-                                <textarea style="height: 300px" id="description" type="textarea" placeholder="challenge description" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" required autocomplete="description">
+                                <textarea id="description" type="textarea"  class="form-control @error('description') is-invalid @enderror" name="description" value="{{$challenge->description}}" required autocomplete="description">
+                                    {{$challenge->description}}
                                 </textarea>
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
@@ -51,7 +52,7 @@
                             <label for="start" class="col-md-4 col-form-label text-md-right">{{ __('Challenge Start Date') }}</label>
 
                             <div class="col-md-6">
-                                <input id="start" type="date" class="form-control @error('start') is-invalid @enderror" name="start" required autocomplete="start">
+                                <input id="start" type="date" class="form-control @error('start') is-invalid @enderror" name="start" required autocomplete="start" value="{{$challenge->start}}">
 
                                 @error('start')
                                     <span class="invalid-feedback" role="alert">
@@ -64,7 +65,7 @@
                             <label for="deadline" class="col-md-4 col-form-label text-md-right">{{ __('Challenge Deadline') }}</label>
 
                             <div class="col-md-6">
-                                <input id="deadline" type="date" class="form-control @error('deadline') is-invalid @enderror" name="deadline" required autocomplete="deadline">
+                                <input id="deadline" type="date" class="form-control @error('deadline') is-invalid @enderror" name="deadline" required  value="{{$challenge->deadline}}" >
 
                                 @error('deadline')
                                     <span class="invalid-feedback" role="alert">
@@ -77,7 +78,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Add') }}
+                                    {{ __('Update') }}
                                 </button>
                             </div>
                         </div>

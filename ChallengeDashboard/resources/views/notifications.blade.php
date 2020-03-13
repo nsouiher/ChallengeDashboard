@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('List of Participants') }}</div>
+                <div class="card-header">{{ __('Guests are waiting for approve!') }}</div>
 
                 <div class="card-body">
                    

@@ -65,17 +65,18 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div  class="flex-center position-ref full-height">
             @if (Route::has('login'))
-                <div class="top-right links">
+                <div  class="top-right links">
                     @auth
                    
+                    @if(Auth::user()->auth=='Organizer' || Auth::user()->auth=='Organizer' )
                         <a  class="nav-link" href="/notifications" >
                         <i style="color:white;" class="fa fa-bell">
                             <span  class="badge badge-info">{{$newGuests}}</span>
                         </i>
                         </a>
-                   
+                   @endif
                         <a href="{{ url('/home') }}">Account</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
@@ -93,10 +94,14 @@
 
                 <div class="links">
                     @auth
+                    @if(Auth::user()->auth=='Organizer' || Auth::user()->auth=='Organizer' )
                     <a href="{{ route('createChallenge') }}">Create New Challenge</a>
-                    <a href="/challenges">Challenges</a>
                     <a href="/manageUsers">Manage Users</a>
                     <a href="/dashboard">Dashboard</a>
+                    @endif
+                    <a href="/challenges">Challenges</a>
+                   
+                    
                     @else
                    <div></div>
                    @endauth
