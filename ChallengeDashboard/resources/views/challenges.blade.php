@@ -19,7 +19,7 @@
                                 <th scope="col">Deadline</th>
                                 <th scope="col">See Challenge</th>
                                 <th scope="col">Participate</th>
-                                @if(Auth::user()->auth=='Organizer' || Auth::user()->auth=='Organizer' )
+                                @if(Auth::user()->auth=='Admin' || Auth::user()->auth=='Organizer' )
                                 <th scope="col">Edit</th>
                                 <th scope="col">Delete</th>
                                 @endif
@@ -37,7 +37,7 @@
                                         @method('POST')
                                         <button class="btn btn-success" type="submit" data-toggle="modal">Participate</button>
                                     </form></td>
-                                    @if(Auth::user()->auth=='Organizer' || Auth::user()->auth=='Organizer' )
+                                    @if(Auth::user()->auth=='Admin' || Auth::user()->auth=='Organizer' )
                                     <td> <form action="{{ route('updateChallenge',$challenge->id)}}" method="get">
                                         {{ csrf_field() }}
                                         @method('GET')

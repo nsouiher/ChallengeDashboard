@@ -70,7 +70,7 @@
                 <div  class="top-right links">
                     @auth
                    
-                    @if(Auth::user()->auth=='Organizer' || Auth::user()->auth=='Organizer' )
+                    @if(Auth::user()->auth=='Admin' || Auth::user()->auth=='Organizer' )
                         <a  class="nav-link" href="/notifications" >
                         <i style="color:white;" class="fa fa-bell">
                             <span  class="badge badge-info">{{$newGuests}}</span>
@@ -94,7 +94,7 @@
 
                 <div class="links">
                     @auth
-                    @if(Auth::user()->auth=='Organizer' || Auth::user()->auth=='Organizer' )
+                    @if(Auth::user()->auth=='Admin' || Auth::user()->auth=='Organizer' )
                     <a href="{{ route('createChallenge') }}">Create New Challenge</a>
                     <a href="/manageUsers">Manage Users</a>
                     <a href="/dashboard">Dashboard</a>
